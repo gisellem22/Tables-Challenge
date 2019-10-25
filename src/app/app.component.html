@@ -1,9 +1,8 @@
-<div style="text-align:center">
+<div class="container">
   <h1> Welcome to {{ title }}! </h1>
-</div>
-
-<nav>
-  <a routerLink="/numbers" routerLinkActive="active">Prueba 1</a>
-  <a routerLink="/letters" routerLinkActive="active">Prueba 2</a>
+<nav class="btn-group d-flex" role="group">
+  <a routerLink="/numbers" routerLinkActive="active" class="btn btn-outline-secondary w-100">PRUEBA 1</a>
+  <a routerLink="/letters" routerLinkActive="active" class="btn btn-outline-secondary w-100">PRUEBA 2</a>
 </nav>
 <router-outlet></router-outlet>
+</div>
