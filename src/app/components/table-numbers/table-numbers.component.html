@@ -1,1 +1,36 @@
-<p>table-numbers works!</p>
+<section class="container mt-5 p-0">
+    <div class="text-center">
+        <button class="btn btn-outline-secondary" (click)="getTableNumbers()">Try it!</button>
+    </div>
+  <div *ngIf="errMsg">
+    <textarea class="form-control mt-3" [(ngModel)]='errMsg'></textarea>
+  </div>
+  <div *ngIf="array">
+    <form>
+      <div class="form-group">
+        <label for="original" class="mt-3">Orginal:</label>
+        <textarea id="original" class="form-control" [(ngModel)]='array'[ngModelOptions]="{standalone: true}"></textarea>
+      </div>
+      </form>
+    <table class="table my-3">
+      <thead>
+        <tr>
+          <th scope="col">N°</th>
+          <th scope="col">Number</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">First Position</th>
+          <th scope="col">Last Position</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let n of table">
+        <tr [class]="n.color">
+          <th scope="row">{{n.counter}}</th>
+          <td>{{n.number}}</td>
+          <td>{{n.quantity}}</td>
+          <td>{{n.first}}</td>
+          <td>{{n.last}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
