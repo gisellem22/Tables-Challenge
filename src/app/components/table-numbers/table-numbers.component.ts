@@ -13,6 +13,7 @@ export class TableNumbersComponent implements OnInit {
   errMsg: string;
   table: Numbers[] = [];
   myMap = new Map();
+  sortedArray: number[];
 
   constructor(public getNumbersService: GetNumbersService) { }
 
@@ -31,6 +32,7 @@ export class TableNumbersComponent implements OnInit {
         this.errMsg = "try again!";
       } else {
         this.createMap(this.array);
+        this.sortedArray = this.arraySort(this.array)
       }
     })
   }
@@ -74,4 +76,19 @@ export class TableNumbersComponent implements OnInit {
     }
     return lineColor
   }
+  //ordenar
+  arraySort (arr:number[]) {
+    let result = Array.from(arr);
+        for (let i = 1; i < result.length; i++) {
+            for (let j = 0; j < (result.length - i); j++) {
+                if (result[j] > result[j + 1]) {
+                    let tmp = result[j];
+                    result[j] = result[j + 1];
+                    result[j + 1] = tmp;
+                }
+            }
+        }
+        console.log("resultado: ", result) 
+        return result;
+      }
 }
