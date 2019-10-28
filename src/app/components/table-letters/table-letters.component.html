@@ -1,1 +1,9 @@
-<p>table-letters works!</p>
+<section class="container mt-5 p-0">
+  <div class="text-center">
+    <button class="btn btn-outline-secondary" (click)="getTableLetters()" (keyup.enter)="getTableNumbers()">Try
+      it!</button>
+  </div>
+  <div *ngFor="let a of array">
+   <p>{{a.paragraph}}</p>
+  </div>
+</section>
