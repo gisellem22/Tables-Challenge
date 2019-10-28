@@ -1,8 +1,10 @@
-<div class="container">
-  <h1> Welcome to {{ title }}! </h1>
-<nav class="btn-group d-flex" role="group">
-  <a routerLink="/numbers" routerLinkActive="active" class="btn btn-outline-secondary w-100">PRUEBA 1</a>
-  <a routerLink="/letters" routerLinkActive="active" class="btn btn-outline-secondary w-100">PRUEBA 2</a>
+<div class="container mt-5">
+  <div class="text-center">
+      <h1> Welcome to {{ title }}! </h1>
+  </div>
+<nav class="btn-group d-flex mt-3" role="group">
+  <a routerLink="/numbers" routerLinkActive="active" class="btn btn-outline-secondary w-100">Table of Numbers</a>
+  <a routerLink="/letters" routerLinkActive="active" class="btn btn-outline-secondary w-100">Table of Letters</a>
 </nav>
 <router-outlet></router-outlet>
 </div>
