@@ -14,7 +14,7 @@ export class TableLettersComponent implements OnInit {
   table: any[] = [];
   letters: any[] = [];
   abc: string[];
-  numbers: any[] = [];
+  numbers: number[] = [];
 
   ngOnInit() { }
 
@@ -42,7 +42,7 @@ export class TableLettersComponent implements OnInit {
     this.createObjLetters(this.table);
   };
   //crea un objeto para contar las letras de cada paragraph
-  createObjLetters(arr) {
+  createObjLetters(arr:any[]) {
     arr.forEach((a, b) => {
       this.letters.push(
         a.reduce((obj, char) => {
@@ -59,7 +59,8 @@ export class TableLettersComponent implements OnInit {
     this.abc = Object.keys(this.letters[0]).splice(0,26);
     console.log( this.abc)
   };
-  sumNumbers(arr){
+  //sumar los valores numericos contenidos en los paragraphs
+  sumNumbers(arr:any){
     arr.forEach(a=> {
       var regex = /(\d+)/g;
       if ((a.paragraph.match(regex))===null){
