@@ -16,8 +16,8 @@
         </tr>
       </thead>
       <tbody *ngFor="let l of letters">
-        <tr [class]="" >
-          <th scope="row" >{{l.counter}}</th>
+        <tr [class]="">
+          <th scope="row">{{l.counter}}</th>
           <td>{{l.a}}</td>
           <td>{{l.b}}</td>
           <td>{{l.c}}</td>
@@ -44,6 +44,8 @@
           <td>{{l.x}}</td>
           <td>{{l.y}}</td>
           <td>{{l.z}}</td>
+          <td>{{numbers[l.counter-1]}}</td>
+
         </tr>
       </tbody>
     </table>
