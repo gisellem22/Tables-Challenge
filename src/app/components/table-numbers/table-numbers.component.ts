@@ -20,14 +20,15 @@ export class TableNumbersComponent implements OnInit {
   ngOnInit() { }
 
   getTableNumbers() {
+    //resetear variables
     this.table = [];
     this.myMap.clear();
-
+    //consumo de API
     this.getNumbersService.numbers().subscribe(data => {
       console.log(data)
       this.array = data.data;
       console.log(this.array)
-
+    //Respuesta nula o valida
       if (data.data === null) {
         this.errMsg = "try again!";
       } else {
@@ -35,7 +36,8 @@ export class TableNumbersComponent implements OnInit {
         this.sortedArray = this.arraySort(this.array)
       }
     })
-  }
+  };
+  //Mapear el arreglo
   createMap(array: number[]) {
     array.forEach(a => {
       if (this.myMap.has(a)) {
@@ -47,7 +49,7 @@ export class TableNumbersComponent implements OnInit {
     console.log(this.myMap)
     this.createObj(this.myMap)
   };
-
+//Crear objeto para cada numero del arreglo
   createObj(arr: Map<number, number>) {
     let counter = 0;
     arr.forEach((a, b) => {
@@ -63,20 +65,21 @@ export class TableNumbersComponent implements OnInit {
     })
     console.log(this.table)
   };
+  //Definir el color de la fila
   colorTheLine(num: number) {
     let lineColor = "";
     if (num >= 2) {
-      lineColor = "table-success";
+      lineColor = "table-success"; //verde
     } else if (num === 1) {
-      lineColor = "table-warning";
+      lineColor = "table-warning"; //amarillo
     } else if (num < 1) {
-      lineColor = "table-secondary";
+      lineColor = "table-secondary"; //gris
     } else {
       lineColor = "";
     }
     return lineColor
-  }
-  //ordenar
+  };
+  //Ordenar los valores de menor a mayor
   arraySort (arr:number[]) {
     let result = Array.from(arr);
         for (let i = 1; i < result.length; i++) {
@@ -90,5 +93,5 @@ export class TableNumbersComponent implements OnInit {
         }
         console.log("resultado: ", result) 
         return result;
-      }
+      };
 }

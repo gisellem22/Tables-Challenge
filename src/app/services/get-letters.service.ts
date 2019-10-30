@@ -8,12 +8,12 @@ import { Answer } from '../models/answer';
 @Injectable({
   providedIn: 'root'
 })
-export class GetNumbersService {
-  url: string = "http://168.232.165.184/prueba/array";
+export class GetLettersService {
+  url: string = "http://168.232.165.184/prueba/dict";
 
   constructor(private http: HttpClient) { }
-
-  numbers(): Observable<Answer> {
+    
+  letters(): Observable<Answer> {
     return this.http.get<Answer>(this.url)
   };
 }
