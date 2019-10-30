@@ -3,7 +3,49 @@
     <button class="btn btn-outline-secondary" (click)="getTableLetters()" (keyup.enter)="getTableNumbers()">Try
       it!</button>
   </div>
-  <div *ngFor="let a of array">
+  <!-- <div *ngFor="let a of array">
    <p>{{a.paragraph}}</p>
+  </div> -->
+  <div *ngIf="array">
+    <table class="table my-3">
+      <thead>
+        <tr>
+          <th scope="col">N°</th>
+          <th *ngFor="let letter of abc" scope="col">{{letter}}</th>
+          <th scope="col">Suma numericos contenidos</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let l of letters">
+        <tr [class]="" >
+          <th scope="row" >{{l.counter}}</th>
+          <td>{{l.a}}</td>
+          <td>{{l.b}}</td>
+          <td>{{l.c}}</td>
+          <td>{{l.d}}</td>
+          <td>{{l.e}}</td>
+          <td>{{l.f}}</td>
+          <td>{{l.g}}</td>
+          <td>{{l.h}}</td>
+          <td>{{l.i}}</td>
+          <td>{{l.j}}</td>
+          <td>{{l.k}}</td>
+          <td>{{l.l}}</td>
+          <td>{{l.m}}</td>
+          <td>{{l.n}}</td>
+          <td>{{l.o}}</td>
+          <td>{{l.p}}</td>
+          <td>{{l.q}}</td>
+          <td>{{l.r}}</td>
+          <td>{{l.s}}</td>
+          <td>{{l.t}}</td>
+          <td>{{l.u}}</td>
+          <td>{{l.v}}</td>
+          <td>{{l.w}}</td>
+          <td>{{l.x}}</td>
+          <td>{{l.y}}</td>
+          <td>{{l.z}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
