@@ -14,6 +14,7 @@ export class TableLettersComponent implements OnInit {
   table: any[] = [];
   letters: any[] = [];
   abc: string[];
+  numbers: any[] = [];
 
   ngOnInit() { }
 
@@ -21,11 +22,13 @@ export class TableLettersComponent implements OnInit {
     //resetear variables
     this.table = [];
     this.letters = [];
+    this.numbers = [];
     //consumo de API
     this.getLettersService.letters().subscribe(data => {
       this.array = data.data;
       console.log(this.array)
-      this.removeSpecialChar(this.array)
+      this.removeSpecialChar(this.array);
+      this.sumNumbers(this.array);
     })
   };
   //quita caracteres especiales, espacios, numeros y mayúsculas
@@ -36,7 +39,7 @@ export class TableLettersComponent implements OnInit {
         .replace(/[_\s]/g, '').split(''))
     )
     console.log(this.table)
-    this.createObjLetters(this.table)
+    this.createObjLetters(this.table);
   };
   //crea un objeto para contar las letras de cada paragraph
   createObjLetters(arr) {
@@ -56,40 +59,27 @@ export class TableLettersComponent implements OnInit {
     this.abc = Object.keys(this.letters[0]).splice(0,26);
     console.log( this.abc)
   };
-
-  // createTable(arr) {
-  //   this.abc.forEach(a => {
-  //     arr.forEach(b=> {
-  //       if (b[a] === a){
-
-  //       }
-  //     })  
-  //   })
-  // };
-
-  // createObjLetters(arr) {
-  //   arr.forEach((a)=> {
-  //     a = a.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").split('').forEach(a => {
-  //       if (this.map2.has(a)) {
-  //         this.map2.set(a, this.map2.get(a) + 1)
-  //       } else {
-  //         this.map2.set(a, 1)
-  //       }
-  //     })
-  //   })
-  //   console.log(this.map2)
-  // };
-  // createObjLetters(arr: Map<number, number>) {
-  //   let counter = 0;
-  //   arr.forEach((a, b) => {
-  //     console.log(a, b)
-  //     this.table.push({
-  //       counter: counter = counter + 1,
-  //       letter: b,
-  //       quantity: a
-  //     })
-  //   })
-  //   console.log(this.table)
-  // };
+  sumNumbers(arr){
+    arr.forEach(a=> {
+      var regex = /(\d+)/g;
+      if ((a.paragraph.match(regex))===null){
+      this.numbers.push(0)
+      } else if((a.paragraph.match(regex)).length===1) {
+      this.numbers.push(parseInt(a.paragraph.match(regex)));
+      }else{
+      let arr = a.paragraph.match(regex);
+      let result= [];
+      let total;
+      arr.forEach(b=> {
+      result.push(parseInt(b));
+      })
+      console.log(result)
+      result.reduce((b,c) =>{
+      return total= b+c;
+      })
+      this.numbers.push(total);
+      }
+      })
+      console.log(this.numbers)
+    };
 }
-// a.paragraph.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").split('').forEach(a => {
