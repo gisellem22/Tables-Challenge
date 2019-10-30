@@ -23,6 +23,7 @@ export class TableNumbersComponent implements OnInit {
     //resetear variables
     this.table = [];
     this.myMap.clear();
+    this.errMsg = "";
     //consumo de API
     this.getNumbersService.numbers().subscribe(data => {
       console.log(data)
